@@ -94,18 +94,19 @@ logs
 results
 node_modules
 .node_history
+package-lock.json
 
 ############################
 # Tests
 ############################
 
+testApp
 coverage
 
 ############################
 # Strapi
 ############################
 
-.env
 license.txt
 exports
 *.cache
