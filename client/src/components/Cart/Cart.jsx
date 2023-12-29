@@ -64,7 +64,7 @@ const Cart = () => {
                             <div className="subtotal">
                                 <span className="text">Subtotal:</span>
                                 <span className="text total">
-                                    &#8377;{cartSubTotal}
+                                    &#8377;{cartSubTotal.toFixed(2)}
                                 </span>
                             </div>
                             <div className="button">

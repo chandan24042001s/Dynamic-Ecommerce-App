@@ -18,13 +18,12 @@ const CartItem = () => {
                     <div className="image-container">
                         <img
                             src={
-                                process.env.REACT_APP_STRIPE_APP_DEV_URL +
-                                item.attributes.image.data[0].attributes.url
+                                item.image
                             }
                         />
                     </div>
                     <div className="prod-details">
-                        <span className="name">{item.attributes.title}</span>
+                        <span className="name">{item.title}</span>
                         <MdClose
                             className="close-btn"
                             onClick={() => handleRemoveFromCart(item)}
@@ -37,7 +36,7 @@ const CartItem = () => {
                             >
                                 -
                             </span>
-                            <span>{item.attributes.quantity}</span>
+                            <span>{item.quantity}</span>
                             <span
                                 onClick={() =>
                                     handleCartProductQuantity("inc", item)
@@ -47,12 +46,12 @@ const CartItem = () => {
                             </span>
                         </div>
                         <div className="text">
-                            <span>{item.attributes.quantity}</span>
+                            <span>{item.quantity}</span>
                             <span>x</span>
                             <span className="highlight">
                                 <span>&#8377;</span>
-                                {item.attributes.price *
-                                    item.attributes.quantity}
+                                {item.price*100 *
+                                    item.quantity}
                             </span>
                         </div>
                     </div>

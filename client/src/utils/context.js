@@ -19,13 +19,13 @@ const AppContext = ({ children }) => {
 
     useEffect(() => {
         let count = 0;
-        cartItems?.map((item) => (count += item.attributes.quantity));
+        cartItems?.map((item) => (count += item.quantity));
         setCartCount(count);
 
         let subTotal = 0;
         cartItems.map(
             (item) =>
-                (subTotal += item.attributes.price * item.attributes.quantity)
+                (subTotal += item.price*100 * item.quantity)
         );
         setCartSubTotal(subTotal);
     }, [cartItems]);
@@ -34,9 +34,9 @@ const AppContext = ({ children }) => {
         let items = [...cartItems];
         let index = items?.findIndex((p) => p.id === product?.id);
         if (index !== -1) {
-            items[index].attributes.quantity += quantity;
+            items[index].quantity += quantity;
         } else {
-            product.attributes.quantity = quantity;
+            product.quantity = quantity;
             items = [...items, product];
         }
         setCartItems(items);
@@ -52,10 +52,10 @@ const AppContext = ({ children }) => {
         let items = [...cartItems];
         let index = items?.findIndex((p) => p.id === product?.id);
         if (type === "inc") {
-            items[index].attributes.quantity += 1;
+            items[index].quantity += 1;
         } else if (type === "dec") {
-            if (items[index].attributes.quantity === 1) return;
-            items[index].attributes.quantity -= 1;
+            if (items[index].quantity === 1) return;
+            items[index].quantity -= 1;
         }
         setCartItems(items);
     };
