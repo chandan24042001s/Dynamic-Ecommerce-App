@@ -17,8 +17,8 @@ const SingleProduct = () => {
     const [quantity, setQuantity] = useState(1);
     const { id } = useParams();
     const { handleAddToCart } = useContext(Context);
-    const { data } = useFetch(`/api/products?populate=*&[filters][id]=${id}`);
-
+    const { data } = useFetch(id);
+    console.log(id)
     const decrement = () => {
         setQuantity((prevState) => {
             if (prevState === 1) return 1;
@@ -30,7 +30,7 @@ const SingleProduct = () => {
     };
 
     if (!data) return;
-    const product = data?.data?.[0]?.attributes;
+    const product = data;
 
     return (
         <div className="single-product-main-content">
@@ -39,8 +39,7 @@ const SingleProduct = () => {
                     <div className="left">
                         <img
                             src={
-                                process.env.REACT_APP_STRIPE_APP_DEV_URL +
-                                product.image.data[0].attributes.url
+                                product.image
                             }
                         />
                     </div>
@@ -58,8 +57,8 @@ const SingleProduct = () => {
                             <button
                                 className="add-to-cart-button"
                                 onClick={() => {
-                                    handleAddToCart(data?.data?.[0], quantity);
-                                    setQuantity(1);
+                                    // handleAddToCart(data?.data?.[0], quantity);
+                                    // setQuantity(1);
                                 }}
                             >
                                 <FaCartPlus size={20} />
@@ -73,8 +72,7 @@ const SingleProduct = () => {
                                 Category:{" "}
                                 <span>
                                     {
-                                        product.categories.data[0].attributes
-                                            .title
+                                        product.category
                                     }
                                 </span>
                             </span>
@@ -91,10 +89,10 @@ const SingleProduct = () => {
                         </div>
                     </div>
                 </div>
-                <RelatedProducts
+                {/* <RelatedProducts
                     productId={id}
-                    categoryId={product.categories.data[0].id}
-                />
+                    categoryId={product.id}
+                /> */}
             </div>
         </div>
     );

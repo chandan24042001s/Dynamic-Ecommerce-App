@@ -2,8 +2,9 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import "./Product.scss";
 
-const Product = ({ data, id }) => {
+const Product = ({ data }) => {
     const navigate = useNavigate();
+    const id=data.id;
     return (
         <div
             className="product-card"
@@ -12,8 +13,7 @@ const Product = ({ data, id }) => {
             <div className="thumbnail">
                 <img
                     src={
-                        process.env.REACT_APP_STRIPE_APP_DEV_URL +
-                        data.image.data[0].attributes.url
+                        data.image
                     }
                 />
             </div>

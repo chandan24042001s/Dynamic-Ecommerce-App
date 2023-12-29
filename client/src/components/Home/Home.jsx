@@ -9,10 +9,10 @@ import { Context } from "../../utils/context";
 const Home = () => {
     const { products, setProducts, categories, setCategories } =
         useContext(Context);
-    useEffect(() => {
-        getProducts();
-        getCategories();
-    }, []);
+    // useEffect(() => {
+    //     getProducts();
+    //     getCategories();
+    // }, []);
 
     const getProducts = () => {
         fetchDataFromApi("/api/products?populate=*").then((res) => {
@@ -25,6 +25,21 @@ const Home = () => {
             setCategories(res);
         });
     };
+    useEffect(() => {
+        //Api Call
+        getProduct();
+      }, []);
+
+    const getProduct=async()=>{
+        const data = await fetch('https://fakestoreapi.com/products')
+        .then(res=>res.json())
+        .then(json=>{
+            console.log(json)
+            setProducts(json);
+        }
+        )
+       
+    }
 
     return (
         <div>

@@ -2,7 +2,7 @@
 import axios from "axios";
 const params = {
     headers: {
-        Authorization: "bearer " + process.env.REACT_APP_STRIPE_APP_KEY,
+        Authorization: "bearer " + process.env.REACT_APP_STRAPI_APP_KEY,
     },
 };
 
