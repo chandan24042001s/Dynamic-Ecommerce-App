@@ -126,9 +126,29 @@ const getUser=asyncHandler(async(req,res)=>{
     }
     res.status(200).json(user)
 })
+
+//get login status of User
+const loginStatus=asyncHandler(async(req,res)=>{
+    const token=req.cookies.token;
+       if(!token){
+        res.json(false)
+        
+       }
+       //verify token
+       const verified=jwt.verify(token,process.env.JWT_SECRET)
+       if(verified){
+        res.json(true)
+       }
+       res.json(false)
+
+})
+
+
+
 module.exports = {
   registerUser,
   loginUser,
   logOut,
-  getUser
+  getUser,
+  loginStatus
 };
