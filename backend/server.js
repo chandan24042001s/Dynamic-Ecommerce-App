@@ -22,15 +22,12 @@ app.get("/",(req,res)=>{
     res.send("homepage")
 })
 
-mongoose.connect(process.env.DATABASE_URL)
-        .then(()=>{
-            app.listen(PORT,()=>{
-                console.log("app run at 3000");
-})
-            })
+//connect to the database
+const dbConnect=require("./config/database");
+dbConnect();
 
-        .catch((err)=>{
-            console.log(err)
-        })
+app.listen(PORT,()=>{
+    console.log("app run at 3000");
+})
      
 
