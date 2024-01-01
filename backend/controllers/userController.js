@@ -142,6 +142,21 @@ const loginStatus=asyncHandler(async(req,res)=>{
 
 })
 
+//update user
+const updateUser=asyncHandler(async(req,res)=>{
+    const user=await User.findById(req.user.id);
+    if(user){
+        const {name,phone,address}=user;
+        user.name=req.body.name || name;
+        user.phone=req.body.phone || phone;
+        user.address=req.body.address || address;
+        const updateuser=await user.save()
+        res.status(200).json(updateuser)
+    }else{
+        res.status(404);
+        throw new Error("user not found");
+    }
+})
 
 
 
@@ -150,5 +165,6 @@ module.exports = {
   loginUser,
   logOut,
   getUser,
-  loginStatus
+  loginStatus,
+  updateUser
 };
