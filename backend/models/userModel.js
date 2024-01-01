@@ -33,6 +33,17 @@ const userSchema=mongoose.Schema(
             type:String,
             required:[true,"please add a photo"],
             default:"https://avatars.githubusercontent.com/u/85206406?v=4"
+        },
+        phone:{
+            type:String,
+            default:"+91"
+        },
+        address:{
+            type:object,
+            //address,state,country
         }
     }
 )
+
+const User=mongoose.model("user",userSchema);
+module.exports=User;
