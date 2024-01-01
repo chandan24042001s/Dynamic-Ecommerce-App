@@ -15,7 +15,7 @@ const userSchema=mongoose.Schema(
             required:[true,"please add a email"],
             unique:true,
             trim:true,
-            validate: [validateEmail, 'Please fill a valid email address'],
+           
             match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, 'Please fill a valid email address']
         },
         password:{
@@ -39,11 +39,11 @@ const userSchema=mongoose.Schema(
             default:"+91"
         },
         address:{
-            type:object,
+            type:'object',
             //address,state,country
         }
     }
 )
 
-const User=mongoose.model("user",userSchema);
+const User=mongoose.model('User',userSchema);
 module.exports=User;
