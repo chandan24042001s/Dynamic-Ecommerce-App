@@ -32,11 +32,13 @@ const registerUser=asyncHandler(async(req,res)=>{
     const user=await User.create({
         name,email,password
     })
+    
 
     //Generate Token for User
     if(user){
         const {_id,name,email,role}=User
-        res.cookie("token",generateToken(_id),{
+        const token=generateToken(_id)
+        res.cookie("token",token,{
             path:"/",
             httpOnly:true,
             expires:new Date(Date.now()+1000*86400),
