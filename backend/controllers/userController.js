@@ -2,6 +2,7 @@ const asyncHandler = require("express-async-handler");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 const User = require("../models/userModel");
+
 const generateToken = (id) => {
   return jwt.sign({ id }, process.env.JWT_SECRET, {
     expiresIn: "1d",
@@ -117,9 +118,17 @@ const logOut=asyncHandler(async(req,res)=>{
 })
 
 
-
+const getUser=asyncHandler(async(req,res)=>{
+    const user=await User.findById(req.user._id).select("-password")
+    if(!user){
+        res.status(400)
+        throw new Error("User not Found")
+    }
+    res.status(200).json(user)
+})
 module.exports = {
   registerUser,
   loginUser,
-  logOut
+  logOut,
+  getUser
 };
