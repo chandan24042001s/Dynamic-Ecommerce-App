@@ -17,6 +17,8 @@ app.use(
         credentials:true,
     })
 )
+const errorHandler=require("./middleware/errorMiddleware")
+app.use(errorHandler);
 
 //Routes
 app.get("/",(req,res)=>{
