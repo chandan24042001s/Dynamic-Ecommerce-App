@@ -59,8 +59,7 @@ const registerUser = asyncHandler(async (req, res) => {
       message: "regisered successfully",
     });
   } else {
-    res.status(400);
-    throw new Error("Invalid user Data");
+    res.status(400).json({error:"Invalid user Data"});
   }
 });
 
@@ -142,6 +141,7 @@ const loginStatus=asyncHandler(async(req,res)=>{
        res.json(false)
 
 })
+
 
 
 
