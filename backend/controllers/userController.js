@@ -158,6 +158,17 @@ const updateUser=asyncHandler(async(req,res)=>{
     }
 })
 
+//update photo
+const updatePhoto=asyncHandler(async(req,res)=>{
+    const {photo}=req.body;
+    const user=await User.findById(req.user._id);
+
+        
+        user.photo=photo
+        
+        const updateuser=await user.save()
+        res.status(200).json(updateuser)
+})
 
 
 module.exports = {
@@ -166,5 +177,6 @@ module.exports = {
   logOut,
   getUser,
   loginStatus,
-  updateUser
+  updateUser,
+  updatePhoto
 };
