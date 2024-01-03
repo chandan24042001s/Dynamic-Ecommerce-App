@@ -19,7 +19,7 @@ import ShowonLogin, { ShowonLogout } from "../hiddenLinks/hiddenlinks";
  const logo=(
     <div className={styles.logo} >
     <Link to="/">
-        <h2>Siya<span>Ram</span></h2>
+        <h2>Siya<span>Ram</span>Store</h2>
     </Link>
 </div>
  )
