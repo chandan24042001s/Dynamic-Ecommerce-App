@@ -13,7 +13,7 @@ app.use(cookieParser());
 app.use(express.urlencoded({extended:false}))
 app.use(
     cors({
-        origin:["https://localhost:3000","https://siya-ram-store.vercel.app"],
+        origin:["https://localhost:5000","https://siya-ram-store.vercel.app"],
         credentials:true,
     })
 )
@@ -35,4 +35,14 @@ app.listen(PORT,()=>{
     console.log("app run at 3000");
 })
      
+// var express = require('express');
+// var cors = require('cors');
+// var app = express();
 
+// app.use(cors());
+
+// // your routes here
+
+// app.listen(3000, function () {
+//  console.log('CORS-enabled web server listening on port 3000');
+// });

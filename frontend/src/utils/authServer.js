@@ -5,9 +5,7 @@ export const API_URL=`${BACKEND_URL}/api/users/`
 
 //register user
 const register=async(userData)=>{
-    const response=await axios.post(API_URL+'register',userData,{
-        withCredentials:true,
-    })
+    const response=await axios.post(`http://localhost:5000/api/users/register`,userData)
     return response.data;
 }
 

@@ -51,6 +51,7 @@ const Header = () => {
                             <CgShoppingCart />
                             {!!cartCount && <span>{cartCount}</span>}
                         </span>
+                        <li id="register" onClick={() => navigate("/register")}>Register</li>
                     </div>
                 </div>
             </header>
