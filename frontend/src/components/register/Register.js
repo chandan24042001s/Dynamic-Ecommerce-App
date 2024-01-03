@@ -6,8 +6,8 @@ import { toast } from 'react-toastify';
 import { RESET_AUTH, register } from '../../utils/reduxStore/authSlice';
 import { validateEmail } from '../../utils/validateEmail';
 const Register = () => {
-    const isSuccess=useSelector((state)=>state.auth)
-    const isLoggedIn=useSelector((state)=>state.auth)
+    const {isSuccess}=useSelector((state)=>state.auth)
+    const {isLoggedIn}=useSelector((state)=>state.auth)
     const dispatch=useDispatch();
     const navigate=useNavigate();
     const [formData,setFormData]=useState({
@@ -45,7 +45,7 @@ const Register = () => {
    useEffect(()=>{
     console.log(isSuccess)
     if(isSuccess && isLoggedIn){
-    //    navigate("/")
+       navigate("/")
     }
     dispatch(RESET_AUTH());
    },[isLoggedIn,isSuccess,dispatch,navigate])
