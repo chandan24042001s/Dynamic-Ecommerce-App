@@ -3,9 +3,9 @@ import "./register.scss"
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from "react-router-dom";
 import { toast } from 'react-toastify';
-import { RESET_AUTH, register } from '../../utils/reduxStore/authSlice';
+import { RESET_AUTH, login } from '../../utils/reduxStore/authSlice';
 import { validateEmail } from '../../utils/validateEmail';
-const Register = () => {
+const Login = () => {
     const isSuccess=useSelector((state)=>state.auth)
     const isLoggedIn=useSelector((state)=>state.auth)
     const dispatch=useDispatch();
@@ -14,19 +14,19 @@ const Register = () => {
         name: '',
    email: '',
    password: '',
-   cpassword: ''
+   
     }
     );
-    const {name,email,password,cpassword}=formData;
+    const {name,email,password}=formData;
 
     const handleInputChange=(e)=>{
         const {name,value}=e.target;
         setFormData({...formData,[name]:value});
     }
 
-    const registerUser=async(e)=>{
+    const loginUser=async(e)=>{
         e.preventDefault();
-        console.log(name,email,password,cpassword);
+        console.log(name,email,password);
         if(!email || !password){
             return toast.error("All field are required")
         }
@@ -36,11 +36,9 @@ const Register = () => {
         if(!validateEmail(email)){
             return toast.error("please enter a valid email")
         }
-        if(password!==cpassword){
-            return toast.error("password do not match")
-        }
-        const userData={name,email,password}
-        await dispatch(register(userData))
+      
+        const userData={email,password}
+        await dispatch(login(userData))
     }
    useEffect(()=>{
     console.log(isSuccess)
@@ -53,14 +51,10 @@ const Register = () => {
 
   return (
     <div className='formdiv'>
-          <form className="form" onSubmit={registerUser} >
-    <p className="title">Register </p>
+           <form className="form" onSubmit={loginUser} >
+    <p className="title">login </p>
     <p className="message">Signup now and get full access to our app. </p>
-     
-        <label>
-            <input name="name" value={name} onChange={handleInputChange} className="input" type="text" placeholder="" required/>
-            <span>Name</span>
-        </label>
+    
 
     <label>
         <input name="email" value={email} onChange={handleInputChange} className="input" type="email" placeholder="" required/>
@@ -71,10 +65,7 @@ const Register = () => {
         <input name="password" value={password} onChange={handleInputChange} className="input" type="password" placeholder="" required/>
         <span>Password</span>
     </label>
-    <label>
-        <input name="cpassword" value={cpassword} onChange={handleInputChange} className="input" type="password" placeholder="" aria-required/>
-        <span>Confirm password</span>
-    </label>
+    
     <button type='submit' className="submit">Submit</button>
     <p className="signin">Already have an acount ? <a href="#">Signin</a> </p>
 </form>
@@ -82,4 +73,4 @@ const Register = () => {
   )
 }
 
-export default Register
+export default Login

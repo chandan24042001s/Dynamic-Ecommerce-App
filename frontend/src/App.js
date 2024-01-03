@@ -11,6 +11,7 @@ import AppContext from "./utils/context";
 import axios from "axios";
 import { ToastContainer } from "react-toastify";
 import Register from "./components/register/Register";
+import Login from "./components/register/Login";
 
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
                 <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="/register" element={<Register/>}/>
+                    <Route path="/login" element={<Login/>}/>
                     <Route path="/category/:id" element={<Category />} />
                     <Route path="/product/:id" element={<SingleProduct />} />
                 </Routes>

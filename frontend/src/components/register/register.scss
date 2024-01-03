@@ -137,4 +137,12 @@
   }
   #register{
     cursor: pointer;
+    list-style-type: none;
+  }
+  .formdiv{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10%;
+    margin-bottom: 10%;
   }
