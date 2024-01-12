@@ -5,7 +5,7 @@ export const API_URL=`${BACKEND_URL}/api/users/`
 
 //register user
 const register=async(userData)=>{
-    const response=await axios.post(`http://localhost:5000/api/users/register`,userData,{
+    const response=await axios.post(API_URL + 'register',userData,{
         withCredentials:true
     })
     return response.data;
@@ -13,7 +13,7 @@ const register=async(userData)=>{
 
 //login user
 const login=async(userData)=>{
-    const response=await axios.post(`http://localhost:5000/api/users/login`,userData,{
+    const response=await axios.post(API_URL + 'login',userData,{
         withCredentials:true
     })
     return response.data;
@@ -21,7 +21,7 @@ const login=async(userData)=>{
 
 //logout user
 const logout=async(userData)=>{
-    const response=await axios.get(`http://localhost:5000/api/users/logout`)
+    const response=await axios.get(`https://localhost:5000/api/users/logout`)
     return response.data.message;
 }
 

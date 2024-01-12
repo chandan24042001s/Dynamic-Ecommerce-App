@@ -11,13 +11,13 @@ const Login = () => {
     const dispatch=useDispatch();
     const navigate=useNavigate();
     const [formData,setFormData]=useState({
-        name: '',
+       
    email: '',
    password: '',
    
     }
     );
-    const {name,email,password}=formData;
+    const {email,password}=formData;
 
     const handleInputChange=(e)=>{
         const {name,value}=e.target;
@@ -26,7 +26,7 @@ const Login = () => {
 
     const loginUser=async(e)=>{
         e.preventDefault();
-        console.log(name,email,password);
+        console.log(email,password);
         if(!email || !password){
             return toast.error("All field are required")
         }

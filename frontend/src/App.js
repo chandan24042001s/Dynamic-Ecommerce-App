@@ -18,7 +18,7 @@ function App() {
     axios.defaults.withCredentials=true;
     return (
         <BrowserRouter>
-            <ToastContainer/>
+           
             <AppContext>
                 <Header />
                 <Routes>
