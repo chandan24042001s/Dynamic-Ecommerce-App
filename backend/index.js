@@ -13,7 +13,8 @@ app.use(cookieParser());
 app.use(express.urlencoded({extended:false}))
 app.use(
     cors({
-        origin:["https://localhost:5000","https://siya-ram-store.vercel.app"],
+        origin:["http://localhost:5000/","https://siya-ram-store.vercel.app"],
+        methods:["POST", "GET", "PUT", "DELETE"],
         credentials:true,
     })
 )
@@ -32,7 +33,7 @@ const dbConnect=require("./config/database");
 dbConnect();
 
 app.listen(PORT,()=>{
-    console.log("app run at 3000");
+    console.log("app run at 5000");
 })
      
 // var express = require('express');

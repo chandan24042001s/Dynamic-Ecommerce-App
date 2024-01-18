@@ -47,7 +47,7 @@ const Register = () => {
     if(isSuccess && isLoggedIn){
        navigate("/")
     }
-    dispatch(RESET_AUTH());
+    // dispatch(RESET_AUTH());
    },[isLoggedIn,isSuccess,dispatch,navigate])
 
 

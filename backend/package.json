@@ -5,8 +5,8 @@
   "main": "server.js",
   "scripts": {
     "test": "jest",
-    "start": "node server.js",
-    "backend": "nodemon server.js"
+    "start": "node index.js",
+    "backend": "nodemon index.js"
   },
   "author": "Chandan kumal",
   "license": "ISC",
